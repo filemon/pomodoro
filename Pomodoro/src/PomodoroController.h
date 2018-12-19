@@ -37,7 +37,8 @@
 
 @interface PomodoroController : CommonController {
         	
-	IBOutlet NSPanel* __unsafe_unretained prefs;
+    __unsafe_unretained IBOutlet NSTextField *token;
+    IBOutlet NSPanel* __unsafe_unretained prefs;
 	IBOutlet NSPanel* __unsafe_unretained namePanel; 
     IBOutlet NSPanel* __unsafe_unretained scriptPanel;
     
@@ -118,6 +119,7 @@
 -(void) keyResume;
 
 -(void) showTimeOnStatusBar:(NSInteger) time;
+//-(NSDictionary *) parseMonksheetProjects;
 
 -(IBAction) about:(id)sender;
 -(IBAction) help:(id)sender;
@@ -132,6 +134,7 @@
 -(IBAction) nameGiven:(id)sender;
 -(IBAction) nameCanceled:(id)sender;
 -(IBAction) reset: (id) sender;
+-(IBAction) refreshProjects:(id)sender;
 
 -(IBAction) externalInterrupt: (id) sender;
 -(IBAction) internalInterrupt: (id) sender;

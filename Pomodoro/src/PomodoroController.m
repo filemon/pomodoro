@@ -35,6 +35,7 @@
 #import "PomodoroNotifier.h"
 #import "PomoNotifications.h"
 #include <CoreServices/CoreServices.h>
+#import "Project.h"
 
 @implementation PomodoroController
 
@@ -267,6 +268,77 @@
 
 	[namePanel close];
 	[self realStart];
+}
+
+-(IBAction) refreshProjects:(id)sender {
+    NSDictionary* projects = [self parseProjects:token.stringValue];
+    //we store array of project names (for project comboboxes) as well as a map to project ID (for monskheet API purposes)
+    //maybe there is a way to display NSDictionary object within NSCombobox so we could get rid of the array
+    [[NSUserDefaults standardUserDefaults] setObject:projects forKey: @"projectsMap"];
+    [[NSUserDefaults standardUserDefaults] setObject:projects.allKeys forKey: @"projects"];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:token.stringValue forKey: @"monksheetsToken"];
+
+}
+
+
+- (NSData *) getprojectsFromMonksheets: (NSString*) token{
+    NSString* url = @"https://monksheets.topmonks.com/api/projects";
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setHTTPMethod:@"GET"];
+    [request setURL:[NSURL URLWithString:url]];
+    [request setValue:@"application/vnd.api+json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/vnd.api+json" forHTTPHeaderField:@"Accept"];
+    [request setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
+    
+    NSError *error = nil;
+    NSHTTPURLResponse *responseCode = nil;
+    
+    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+    NSLog(@"%@", [request allHTTPHeaderFields]);
+    NSLog(@"%@", request);
+
+    if([responseCode statusCode] != 200){
+        NSLog(@"Error getting %@, HTTP status code %i", url, [responseCode statusCode]);
+        return nil;
+    }
+    
+    return oResponseData;
+}
+
+- (NSDictionary *) parseProjects: (NSString *) token {
+    
+    
+    NSData *returnedData = [self getprojectsFromMonksheets:token];
+    NSMutableDictionary* projects = [NSMutableDictionary dictionary];
+    
+    if(NSClassFromString(@"NSJSONSerialization")){
+        NSError *error = nil;
+        id object = [NSJSONSerialization
+                     JSONObjectWithData:returnedData
+                     options:0
+                     error:&error];
+        
+        if(error) { NSLog(@"Error parsing the JSON %@",returnedData); }
+        
+        // the originating poster wants to deal with dictionaries;
+        // assuming you do too then something like this is the first
+        // validation step:
+        if([object isKindOfClass:[NSDictionary class]])
+        {
+            NSArray *results = object[@"data"];
+            for (id project in results) {
+                [projects setObject: project[@"id"] forKey: project[@"attributes"][@"name"]];
+            }
+
+        }
+        else
+        {
+            NSLog(@"Incompatible JSON structure received %@",object);
+        }
+    }
+    
+    return projects;
 }
 
 - (void) setFocusOnPomodoro {

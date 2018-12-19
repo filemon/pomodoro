@@ -113,6 +113,7 @@
 		69ED6411133BB31F003F59BA /* SmartTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 69ED6410133BB31F003F59BA /* SmartTimer.m */; };
 		69ED6414133BB502003F59BA /* SmartTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69ED6413133BB502003F59BA /* SmartTimerTests.m */; };
 		69FCF747135729DD003862DC /* ringBreak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 69FCF746135729DD003862DC /* ringBreak.wav */; };
+		B9D12D4A21C7CEE800D7707F /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D12D4921C7CEE800D7707F /* Project.m */; };
 		DB8AF4F4165EEB0F0039DA49 /* OpenUrlCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8AF4F3165EEB0F0039DA49 /* OpenUrlCommand.m */; };
 		DBD776DB16604D16003F58B4 /* safari.png in Resources */ = {isa = PBXBuildFile; fileRef = DBD776DA16604D15003F58B4 /* safari.png */; };
 		DBD776E216605537003F58B4 /* BrowsingNannyController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD776E116605536003F58B4 /* BrowsingNannyController.m */; };
@@ -398,6 +399,8 @@
 		69ED6412133BB502003F59BA /* SmartTimerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartTimerTests.h; sourceTree = "<group>"; };
 		69ED6413133BB502003F59BA /* SmartTimerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartTimerTests.m; sourceTree = "<group>"; };
 		69FCF746135729DD003862DC /* ringBreak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringBreak.wav; sourceTree = "<group>"; };
+		B9D12D4821C7CEE800D7707F /* Project.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Project.h; path = src/Project.h; sourceTree = "<group>"; };
+		B9D12D4921C7CEE800D7707F /* Project.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Project.m; path = src/Project.m; sourceTree = "<group>"; };
 		DB8AF4F2165EEB0F0039DA49 /* OpenUrlCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenUrlCommand.h; path = src/OpenUrlCommand.h; sourceTree = "<group>"; };
 		DB8AF4F3165EEB0F0039DA49 /* OpenUrlCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenUrlCommand.m; path = src/OpenUrlCommand.m; sourceTree = "<group>"; };
 		DBD776DA16604D15003F58B4 /* safari.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = safari.png; sourceTree = "<group>"; };
@@ -490,6 +493,8 @@
 				698F45FF133B5AF900311E34 /* PomodoroNotifier.h */,
 				698F4600133B5AF900311E34 /* PomodoroNotifier.m */,
 				698F4601133B5AF900311E34 /* PomoNotifications.h */,
+				B9D12D4821C7CEE800D7707F /* Project.h */,
+				B9D12D4921C7CEE800D7707F /* Project.m */,
 			);
 			name = Pomodoro;
 			sourceTree = "<group>";
@@ -1097,6 +1102,7 @@
 				69ED6411133BB31F003F59BA /* SmartTimer.m in Sources */,
 				69D17DD6136AAC9F00F5D922 /* StartCommand.m in Sources */,
 				69D17E15136C0C9C00F5D922 /* ResetCommand.m in Sources */,
+				B9D12D4A21C7CEE800D7707F /* Project.m in Sources */,
 				69D17E18136C0ECB00F5D922 /* ForceCommand.m in Sources */,
 				69D17E1B136C0F6300F5D922 /* ExternalInterruptCommand.m in Sources */,
 				69D17E21136C101900F5D922 /* ResumeCommand.m in Sources */,

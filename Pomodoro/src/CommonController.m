@@ -58,7 +58,8 @@
 		globalPomodoroDone = @"0";
 	}
     
-    NSString* pomodoroProject = [[NSUserDefaults standardUserDefaults] objectForKey:@"pomodoroProject"];
+    NSString* pomodoroProjectName = [[NSUserDefaults standardUserDefaults] objectForKey:@"pomodoroProject"];
+    NSString* pomodoroProject = [[NSUserDefaults standardUserDefaults] objectForKey:@"projectsMap"][pomodoroProjectName];
     
 	NSArray* values = [NSArray arrayWithObjects:[[NSUserDefaults standardUserDefaults] objectForKey:@"pomodoroName"], durationString, dailyPomodoroDone, globalPomodoroDone, pomodoroProject, nil];
 	return [Binder substituteDefault:name withVariables:variables andValues:values];
