@@ -71,6 +71,7 @@
                 <outlet property="setupPomodoro" destination="14" id="54"/>
                 <outlet property="startPomodoro" destination="21" id="66"/>
                 <outlet property="tabView" destination="102" id="155"/>
+                <outlet property="tf" destination="dhC-xj-7Qu" id="cRf-aR-xfj"/>
                 <outlet property="token" destination="3XI-57-5vu" id="a0m-Zy-DCC"/>
                 <outlet property="toolBar" destination="87" id="534"/>
             </connections>
@@ -1040,11 +1041,12 @@ DQ
                                                         </textFieldCell>
                                                         <connections>
                                                             <action selector="refreshProjects:" target="9" id="g8B-Av-Mkd"/>
+                                                            <binding destination="36" name="value" keyPath="values.monksheetsToken" id="xyy-Ta-jMn"/>
                                                             <outlet property="delegate" destination="9" id="dI4-fR-u0I"/>
                                                         </connections>
                                                     </textField>
                                                     <button verticalHuggingPriority="750" id="eEC-Fa-6qC">
-                                                        <rect key="frame" x="357" y="4" width="123" height="32"/>
+                                                        <rect key="frame" x="515" y="4" width="123" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="push" title="Sync projects" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gwQ-bi-Z8o">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1054,6 +1056,15 @@ DQ
                                                             <action selector="refreshProjects:" target="9" id="bOt-3o-1Q0"/>
                                                         </connections>
                                                     </button>
+                                                    <textField verticalHuggingPriority="750" id="dhC-xj-7Qu">
+                                                        <rect key="frame" x="370" y="13" width="132" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Get token" id="KY2-pJ-scF">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
                                                 </subviews>
                                             </view>
                                         </box>

@@ -270,6 +270,7 @@
 	[self realStart];
 }
 
+
 -(IBAction) refreshProjects:(id)sender {
     NSDictionary* projects = [self parseProjects:token.stringValue];
     //we store array of project names (for project comboboxes) as well as a map to project ID (for monskheet API purposes)
@@ -660,9 +661,21 @@
 	
 	if ([self checkDefault:@"showSplashScreenAtStartup"]) {
 		[self help:nil];
-	}	
+	}
+    
+    [tf setAllowsEditingTextAttributes: YES];
+    [tf setSelectable:YES];
+    NSString *tokenText = @"<a href=\"https://monksheets.topmonks.com/tokens\">Get your token here</a>";
+    [tf setAttributedStringValue:[self stringFromHTML:tokenText withFont:[tf font]]];
 		
 }
 
-
+-(NSAttributedString *)stringFromHTML:(NSString *)html withFont:(NSFont *)font
+{
+    if (!font) font = [NSFont systemFontOfSize:0.0];  // Default font
+    html = [NSString stringWithFormat:@"<span style=\"font-family:'%@'; font-size:%dpx;\">%@</span>", [font fontName], (int)[font pointSize], html];
+    NSData *data = [html dataUsingEncoding:NSUTF8StringEncoding];
+    NSAttributedString* string = [[NSAttributedString alloc] initWithHTML:data documentAttributes:nil];
+    return string;
+}
 @end

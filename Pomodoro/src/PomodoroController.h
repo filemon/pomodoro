@@ -37,6 +37,7 @@
 
 @interface PomodoroController : CommonController {
         	
+    __unsafe_unretained IBOutlet NSTextField *tf;
     __unsafe_unretained IBOutlet NSTextField *token;
     IBOutlet NSPanel* __unsafe_unretained prefs;
 	IBOutlet NSPanel* __unsafe_unretained namePanel; 
